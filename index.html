@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+
+    textarea {
+      font-family: sans-serif;
+      border: none;
+      background-color: black;
+      width: 100%;
+      height: 100px;
+      /*height:100px;*/
+      color: white;
+      font-weight: bold;
+    }
+
+    #subject {
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    #information {
+      font-size: 1.7rem;
+    }
+
+    #clock {
+      margin: 0;
+      font-size: 18vw;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <textarea id="subject" placeholder="과목" style="height: 50px;"></textarea>
+  <textarea id="information" placeholder="공지사항" onkeyup="autoResize(this)" onkeydown="autoResize(this)" rows="3"
+    style="overflow:hidden;"></textarea>
+
+  <p id="clock"></p>
+
+  <script>
+    var myVar = setInterval(function() {
+      myTimer();
+    }, 1000);
+
+    function myTimer() {
+      var event = new Date();
+      document.getElementById("clock").innerHTML = event.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    // textarea 높이 자동조절 - https://jh-tr.tistory.com/80
+    function autoResize(textarea) {
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+    }
+  </script>
+
+</body>
+
+</html>
